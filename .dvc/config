@@ -1,0 +1,7 @@
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = s3://dvc-storage
+    endpointurl = http://139.162.39.5:9000
+    access_key_id = minioadmin
+    secret_access_key = minio123
