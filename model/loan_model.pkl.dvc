@@ -1,5 +1,5 @@
 outs:
-- md5: 60bdb25d1f2e28e2559a9ad3ecec47da
-  size: 5871
+- md5: 274001dc4709c41144ec27f7712963f4
+  size: 18031
   hash: md5
   path: loan_model.pkl

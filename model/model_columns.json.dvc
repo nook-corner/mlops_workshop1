@@ -1,0 +1,5 @@
+outs:
+- md5: 276b26f2aa9a07966a7f6d1f705c8359
+  size: 12528
+  hash: md5
+  path: model_columns.json
