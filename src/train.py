@@ -13,7 +13,7 @@ import json
 from pathlib import Path
 
 # ====== CONFIG ======
-MLFLOW_TRACKING_URI = "http://139.162.39.5:5000"  # แก้เป็น IP Linode ของคุณ
+#MLFLOW_TRACKING_URI = "http://139.162.39.5:5000"  # แก้เป็น IP Linode ของคุณ
 EXPERIMENT_NAME = "loan-prediction"
 
 # ====== STEP 1: Load data from DVC ======
@@ -86,7 +86,17 @@ with open("model/fill_values.json", "w") as f:
     json.dump(fill_values, f)
 
 # ====== STEP 5: MLflow Setup ======
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+#mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+# ถ้าอยู่ใน GitHub Actions  เก็บ artifact ใน workspace ของ runner
+if os.getenv("GITHUB_ACTIONS") == "true":
+    workspace_dir = os.getenv("GITHUB_WORKSPACE", ".")
+    mlruns_path = os.path.join(workspace_dir, "mlruns")
+    mlflow.set_tracking_uri(f"file:{mlruns_path}")
+else:
+    mlflow.set_tracking_uri("http://139.162.39.5:5000")  # MLflow server บน Linod
+
+
+
 mlflow.set_experiment(EXPERIMENT_NAME)
 
 with mlflow.start_run():
