@@ -7,3 +7,4 @@ venv/
 !.dvc
 mlruns/
 mlflow.db
+/model
