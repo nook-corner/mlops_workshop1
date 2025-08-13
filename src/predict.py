@@ -4,8 +4,10 @@ import pandas as pd
 import joblib, json
 import uvicorn
 from pathlib import Path
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
+Instrumentator().instrument(app).expose(app)
 
 # ‚À≈¥ artifacts
 MODEL_PATH = Path("model/loan_model.pkl")
