@@ -52,6 +52,12 @@ if "Credit_History" in df.columns:
 X = df.drop("Loan_Status_Y", axis=1)
 y = df["Loan_Status_Y"]
 
+
+for col in X.columns:
+    if pd.api.types.is_integer_dtype(X[col]):
+        X[col] = X[col].astype(float)
+
+
 # รายชื่อคอลัมน์หลัง encode
 model_columns = list(X.columns)
 
