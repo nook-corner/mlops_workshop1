@@ -10,3 +10,7 @@ scrape_configs:
     metrics_path: /minio/v2/metrics/node
     static_configs:
       - targets: ["minio:9000"]    
+
+  - job_name: node
+    static_configs:
+      - targets: ["http://139.162.39.5:9100"]
